@@ -2,11 +2,12 @@ import os
 from PyPDF2 import PdfReader
 import xlsxwriter
 
-path_to_pdf_directory = input(r"Enter the path of the folder containing pdf files: ")
+path_to_pdf_directory = input("Enter the path of the folder containing pdf files: ")
+workbook_name = input("Enter the Excel Workbook name: ")
 files = os.listdir(path_to_pdf_directory)
 pdf_files = [f for f in files if os.path.isfile(path_to_pdf_directory+'/'+f)] #Filtering only the files.
 
-workbook = xlsxwriter.Workbook('pdf_pages_count.xlsx')
+workbook = xlsxwriter.Workbook(workbook_name+'.xlsx')
 worksheet = workbook.add_worksheet()
 
 worksheet.write('A1', 'File Name')
